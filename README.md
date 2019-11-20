@@ -1,0 +1,1 @@
+"# odoo-amazon-cart-genetator" 
