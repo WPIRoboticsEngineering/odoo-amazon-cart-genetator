@@ -35,9 +35,12 @@ def buildAmazonLink(rfq):
             for l in ol:
                 # ASIN extraction REGEX. The asin can be in a URL, surrounded by brackets
                 # or in a url surrounded by brackets, or whatever, it's really inconsistent.
-                x = re.compile("(?:[/dp/]|$)([A-Z0-9]{10})") 
+                #x = re.compile("(?:[/dp/]|$)([A-Z0-9]{10})") 
+                x = re.compile("([A-Z0-9]{10})") 
                 #Only add it to the URL if we have a match
+                
                 if x.search(l.display_name):
+                    print("Match")
                     m = x.search(l.display_name)
                     asin = l.display_name[m.start()+1:m.end()]
                     qty = int(l.product_qty)
@@ -46,6 +49,9 @@ def buildAmazonLink(rfq):
                         link = link + "&"
                     link = link + "ASIN.%d=%s&Quantity.%d=%d"%(item,asin,item,qty)
                     item+=1
+                print(l.display_name)
+                print("")
+            print("")
             print(link) 
 
 
