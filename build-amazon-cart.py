@@ -36,7 +36,7 @@ def buildAmazonLink(rfq):
                 # ASIN extraction REGEX. The asin can be in a URL, surrounded by brackets
                 # or in a url surrounded by brackets, or whatever, it's really inconsistent.
                 #x = re.compile("(?:[/dp/]|$)([A-Z0-9]{10})") 
-                x = re.compile("([A-Z0-9]{10})") 
+                x = re.compile("(?<=\[).+?(?=\])") 
                 #Only add it to the URL if we have a match
                 
                 if x.search(l.display_name):
